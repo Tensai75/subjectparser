@@ -17,6 +17,7 @@ type Subject struct {
 	TotalSegments int    // number of total segments for this file (=Y in (X/Y))
 }
 
+// the Parse method analyses a given string and returns the Subject structure
 func Parse(s string) (Subject, error) {
 
 	// new subject structure
@@ -72,7 +73,7 @@ func Parse(s string) (Subject, error) {
 					// check if we have already assigned the segment numbers
 					// if yes, probably both, files and segments used round brackets
 					// in this case we assume that segment numbers are at the end
-					// and assigne these "segment" numbers to the files
+					// and assign these "segment" numbers to the files
 					if subject.TotalSegments != 0 {
 						subject.File, _ = strconv.Atoi(matches[counter]["segment"])
 						subject.TotalFiles, _ = strconv.Atoi(matches[counter]["totalsegments"])
