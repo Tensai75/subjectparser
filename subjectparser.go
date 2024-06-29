@@ -118,7 +118,7 @@ func Parse(s string) (Subject, error) {
 	// we first assume that the filename is between quotes and may or may not end with an extension
 	// we also assume that there is no more relevant information after the filename
 	// everything before the filename is considered to be the header
-	r = regexp.MustCompile(`(?i)^(?P<header>.*?)?[- ]*"+(?P<filename>(?P<basefilename>.*?)(?:\.(?P<extension>(?:vol\d+\+\d+\.par2?|part\d+\.[^ "\.]*|[^ "\.]*\.\d+|[^ "\.]*)))?)"+`)
+	r = regexp.MustCompile(`(?i)^(?P<header>.*?)?[- ]*"+(?P<filename>(?P<basefilename>.*?)(?:\.(?P<extension>(?:7z\.)?(?:vol\d+\+\d+\.par2?|part\d+\.[^ "\.]*|[^ "\.]*\.\d+|[^ "\.]*)))?)"+`)
 	matches = findAllNamedMatches(r, remainder)
 	if matches != nil {
 		subject.Header = strings.Trim(matches[0]["header"], " -")
